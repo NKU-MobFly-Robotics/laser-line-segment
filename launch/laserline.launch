@@ -1,0 +1,14 @@
+<launch>
+  <node name="laserline" pkg="laserline" type="laserline">
+    <param name="~frame_id" value="laser" />
+    <param name="~scan_topic" value="scan" />
+    <param name="~frequency" value="40.0" />
+    <param name="~show_lines" value="true" />
+    <param name="~least_thresh" value="0.03" />
+    <param name="~min_line_length" value="0.6" />
+    <param name="~predict_distance" value="0.1" />
+    <param name="~seed_line_points" value="6" />
+    <param name="~min_line_points" value="10" />
+  </node>
+</launch>
+
