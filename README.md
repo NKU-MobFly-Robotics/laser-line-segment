@@ -4,4 +4,4 @@ A novel algorithm about laser line segment extarction using 2D laser data.
 
 [Video demo](https://youtu.be/yNN9NRioOBc)
 
-[More information about our research group](xuebozhang.net)
+[More information about our research group](https://xuebozhang.net)
