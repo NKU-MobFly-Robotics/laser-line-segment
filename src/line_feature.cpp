@@ -247,7 +247,10 @@ int LineFeature::detectfulline(const int start)
 	//向后回溯
 
 	n1 = start - 1;
-
+	if(n1 < 0)
+	{
+		flag1 = false;
+	}
 	while(flag1)
 	{
 		if((fabs(a*range_data_.xs[n1]+b*range_data_.ys[n1]+c)/(sqrt(1+a*a)))<params_.least_thresh)
