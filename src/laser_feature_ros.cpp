@@ -36,13 +36,27 @@ void LaserFeatureROS::compute_bearing(const sensor_msgs::LaserScan::ConstPtr &sc
 	std::vector<double> bearings, cos_bearings, sin_bearings;
 	std::vector<unsigned int> index;
 	unsigned int i = 0;
-	for (double b = scan_msg->angle_min; b <= scan_msg->angle_max; b += scan_msg->angle_increment)
+	if( scan_msg.angle_increment < 0)
+	{	
+		for (double b = scan_msg->angle_min; b >= scan_msg->angle_max; b += scan_msg->angle_increment)
+		{
+			bearings.push_back(b);
+			cos_bearings.push_back(cos(b));
+	    	sin_bearings.push_back(sin(b));
+	    	index.push_back(i);
+	    	i++;
+		}
+	}
+	else
 	{
-		bearings.push_back(b);
-		cos_bearings.push_back(cos(b));
-    	sin_bearings.push_back(sin(b));
-    	index.push_back(i);
-    	i++;
+		for (double b = scan_msg->angle_min; b <= scan_msg->angle_max; b += scan_msg->angle_increment)
+		{
+			bearings.push_back(b);
+			cos_bearings.push_back(cos(b));
+	    	sin_bearings.push_back(sin(b));
+	    	index.push_back(i);
+	    	i++;
+		}
 	}
 
 	line_feature_.setCosSinData(bearings, cos_bearings, sin_bearings, index);
